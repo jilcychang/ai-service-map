@@ -7,24 +7,26 @@
     <meta name="description" content="一覽20個政府運用AI技術，在生活各個面向提供更聰明、更便利的智慧服務案例">
     <style>
         :root {
-            /* 色彩系統定義 */
-            --color-learning: #4caf50; /* 綠色 */
-            --color-career: #2196f3;   /* 藍色 */
-            --color-finance: #f57f17;  /* 深黃色 (加深以搭配白字) */
-            --color-life: #e91e63;     /* 粉紅 */
-            --color-public: #9c27b0;   /* 紫色 */
+            /* --- 色彩系統 --- */
+            --color-learning: #2e7d32; 
+            --color-career: #0d47a1;   
+            --color-finance: #d84315;  
+            --color-life: #ad1457;     
+            --color-public: #6a1b9a;   
             
-            --text-dark: #333;
-            --text-gray: #666;
+            --text-dark: #111;
+            --text-gray: #333;
             --bg-body: #f5f7fa;
             
-            --shadow-card: 0 4px 6px rgba(0,0,0,0.05);
-            --shadow-hover: 0 8px 15px rgba(0,0,0,0.1);
+            --shadow-card: 0 4px 6px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 15px rgba(0,0,0,0.15);
         }
 
         * { box-sizing: border-box; }
 
         body {
+            /* 調整 1：基礎字體放大至 24px (原 18px) */
+            font-size: 24px; 
             font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
             background-color: var(--bg-body);
             color: var(--text-dark);
@@ -33,49 +35,77 @@
             line-height: 1.6;
         }
 
-        /* 頁首樣式 */
+        /* --- 核心修改：圖片融合術 --- */
+
+        /* 1. 分類大圖樣式 */
+        .icon-category {
+            /* 調整 2：圖片配合字體放大 */
+            width: 100px;        /* 原 70px -> 100px */
+            height: 100px;
+            object-fit: contain; 
+            background-color: white; 
+            border-radius: 50%;  
+            padding: 12px;       /* 內距微調 */
+            margin-right: 20px;  /* 間距加大 */
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2); 
+            flex-shrink: 0;      /* 防止圖片被壓縮 */
+        }
+
+        /* 2. 服務小圖樣式 */
+        .icon-service {
+            /* 調整 3：小圖示放大 */
+            width: 48px;         /* 原 32px -> 48px */
+            height: 48px;
+            object-fit: contain;
+            margin-right: 15px;  /* 間距加大 */
+            border-radius: 6px;  
+        }
+
+        /* 頁首 */
         header {
             text-align: center;
-            margin-bottom: 50px;
-            max-width: 900px;
+            margin-bottom: 60px; /* 下方留白稍微加大 */
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
         }
 
         h1 {
-            margin: 0 0 16px 0;
-            font-size: 2.2rem;
-            color: #2c3e50;
+            margin: 0 0 20px 0;
+            /* 調整 4：主標題放大 */
+            font-size: 3rem;     /* 原 2.5rem */
+            color: #000;
             font-weight: 800;
         }
 
         .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            line-height: 1.6;
+            /* 調整 5：副標題放大 */
+            font-size: 1.5rem;   /* 原 1.25rem */
+            color: #444;
+            font-weight: 500;
+            line-height: 1.5;
         }
 
-        /* 網格佈局系統 */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;   /* 容器放寬以容納大內容 */
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            /* 調整 6：卡片最小寬度加大，避免過度擠壓 */
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 32px;
             align-items: start;
         }
 
-        /* 卡片主體樣式 */
         .category-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px; /* 圓角稍微加大 */
             overflow: hidden;
             box-shadow: var(--shadow-card);
-            /* 移除原本的 border-top，因為標題區塊已經有顏色了 */
             display: flex;
             flex-direction: column;
             height: 100%;
             transition: transform 0.2s ease;
+            border: 1px solid #ddd;
         }
         
         .category-card:hover {
@@ -83,111 +113,121 @@
             box-shadow: var(--shadow-hover);
         }
 
-        /* 標題區塊 - 改為彩色底、白字 */
         .card-header {
-            padding: 20px 24px;
-            color: white; /* 統一白字 */
-            border-bottom: none; /* 移除分隔線，色塊本身就是分隔 */
+            padding: 24px 30px;
+            color: white; 
+            border-bottom: none; 
+            display: flex;
+            align-items: center; 
         }
 
         .card-header h2 {
             margin: 0;
-            font-size: 1.4rem;
+            /* 調整 7：類別標題放大 */
+            font-size: 2.2rem;   /* 原 1.6rem */
             font-weight: 700;
-            color: white !important; /* 強制白字 */
-            display: flex;
-            align-items: center;
+            color: white !important;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1); 
         }
 
-        /* 內容區塊 */
         .card-body {
-            padding: 24px;
+            padding: 30px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .description {
-            font-size: 0.95rem;
+            /* 調整 8：說明文字放大 */
+            font-size: 1.35rem;  /* 原 1.1rem */
             color: var(--text-gray);
-            margin-bottom: 20px;
-            /* 移除 min-height 限制，讓版面更自然 */
+            margin-bottom: 30px;
+            font-weight: 500;
         }
 
-        /* 按鈕列表樣式 */
         .service-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* 自動調整欄數 */
-            gap: 12px;
-            /* 移除 margin-top: auto; 讓按鈕統一靠上 (接續在文字後) */
+            /* 調整 9：按鈕最小寬度加大，填補留白 */
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
             margin-top: 0; 
         }
 
-        /* 連結按鈕樣式 */
+        /* 按鈕樣式 */
         .service-btn {
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 12px 10px;
+            justify-content: flex-start; 
+            text-align: left;
+            padding: 16px 20px;
             text-decoration: none;
-            color: var(--text-dark);
-            background-color: #f8f9fa;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            min-height: 50px;
+            color: #000;
+            background-color: #ffffff; 
+            border: 1px solid #ccc;
+            border-bottom: 4px solid #ccc; /* 底部加厚 */
+            border-radius: 12px;
+            
+            /* 調整 10：按鈕文字放大 */
+            font-size: 1.4rem;   /* 原 1rem */
+            font-weight: 700;
+            transition: all 0.1s ease;
+            min-height: 80px;    /* 高度增加 */
         }
 
         .service-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            color: white;
-            border-color: transparent;
+            transform: translateY(2px); 
+            border-bottom-width: 1px;   
+            background-color: #f8f9fa;  
+            box-shadow: none;
+            text-decoration: none;
+            border-color: #bbb;
         }
 
-        /* 個別類別配色設定：設定標題背景色 */
-        /* 1. 學習幫手 - 綠色 */
+        /* 鍵盤操作 */
+        a:focus-visible {
+            outline: 3px solid #000;
+            outline-offset: 2px;
+        }
+
+        /* 個別類別配色 */
         .learning .card-header { background-color: var(--color-learning); }
-        .learning .service-btn:hover { background-color: var(--color-learning); }
+        .learning .service-btn:hover { border-color: var(--color-learning); color: var(--color-learning); }
 
-        /* 2. 職涯加速器 - 藍色 */
         .career .card-header { background-color: var(--color-career); }
-        .career .service-btn:hover { background-color: var(--color-career); }
+        .career .service-btn:hover { border-color: var(--color-career); color: var(--color-career); }
 
-        /* 3. 理財好夥伴 - 黃色 */
         .finance .card-header { background-color: var(--color-finance); }
-        .finance .service-btn:hover { 
-            background-color: var(--color-finance); 
-            color: white; /* Hover 時改為白字 */
-        }
+        .finance .service-btn:hover { border-color: var(--color-finance); color: var(--color-finance); }
 
-        /* 4. 生活萬事通 - 粉紅 */
         .life .card-header { background-color: var(--color-life); }
-        .life .service-btn:hover { background-color: var(--color-life); }
+        .life .service-btn:hover { border-color: var(--color-life); color: var(--color-life); }
 
-        /* 5. 公共事務通 - 紫色 */
         .public .card-header { background-color: var(--color-public); }
-        .public .service-btn:hover { background-color: var(--color-public); }
+        .public .service-btn:hover { border-color: var(--color-public); color: var(--color-public); }
 
-        /* Footer */
         footer {
             text-align: center;
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid #e0e0e0;
-            color: #888;
-            font-size: 0.85rem;
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 2px solid #ddd;
+            color: #444;
+            font-size: 1.2rem;
+            font-weight: 500;
         }
 
-        /* 手機版優化 */
         @media (max-width: 600px) {
-            body { padding: 20px 10px; }
-            h1 { font-size: 1.8rem; }
-            .container { grid-template-columns: 1fr; } /* 手機強制單欄 */
-            .service-list { grid-template-columns: 1fr 1fr; } /* 手機按鈕雙欄 */
+            body { padding: 20px 10px; font-size: 20px; } /* 手機版稍微縮小一點避免爆版 */
+            h1 { font-size: 2.2rem; }
+            .container { grid-template-columns: 1fr; } 
+            .service-list { grid-template-columns: 1fr; } /* 手機版改單欄，因為按鈕變很大 */
+            .service-btn { 
+                padding: 15px; 
+                min-height: 70px; 
+                font-size: 1.3rem;
+            } 
+            .icon-category { width: 80px; height: 80px; }
+            .icon-service { margin-right: 15px; } 
         }
     </style>
 </head>
@@ -203,14 +243,26 @@
         <!-- 1. 學習幫手 -->
         <article class="category-card learning">
             <div class="card-header">
+                <!-- 這裡使用 src="cat-learning.png" 替換 -->
+                <img src="images/icon-learning.png" alt="學習圖示" class="icon-category">
                 <h2>學習幫手</h2>
             </div>
             <div class="card-body">
                 <p class="description">運用 AI 進行個人化適性學習，讓教育更有效率。</p>
                 <div class="service-list">
-                    <a href="https://www.coolenglish.edu.tw/course/view.php?id=770" target="_blank" rel="noopener noreferrer" class="service-btn">CoolE Bot</a>
-                    <a href="https://adl.edu.tw/HomePage/home/" target="_blank" rel="noopener noreferrer" class="service-btn">因材網 e 度</a>
-                    <a href="https://ailms.tp.edu.tw/info/services" target="_blank" rel="noopener noreferrer" class="service-btn">酷 AI 學習系統</a>
+                    <!-- 這裡使用 src="svc-cool.png" 替換 -->
+                    <a href="https://www.coolenglish.edu.tw/course/view.php?id=770" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/learn01.png" alt="" class="icon-service">
+                        CoolE Bot
+                    </a>
+                    <a href="https://adl.edu.tw/HomePage/home/" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/learn02.png" alt="" class="icon-service">
+                        因材網 e 度
+                    </a>
+                    <a href="https://ailms.tp.edu.tw/info/services" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/learn03.png" alt="" class="icon-service">
+                        酷 AI 系統
+                    </a>
                 </div>
             </div>
         </article>
@@ -218,18 +270,40 @@
         <!-- 2. 職涯加速器 -->
         <article class="category-card career">
             <div class="card-header">
+                <img src="images/icon-career.png" alt="職涯圖示" class="icon-category">
                 <h2>職涯加速器</h2>
             </div>
             <div class="card-body">
                 <p class="description">從就業、設立公司、財務規劃到商標檢索，AI 都能提供專業協助。</p>
                 <div class="service-list">
-                    <a href="https://onestop.nat.gov.tw/noss/backstage/manage/main/info.do" target="_blank" rel="noopener noreferrer" class="service-btn">商妮</a>
-                    <a href="https://www.sme.gov.tw/caas/article-caas-3040-16885" target="_blank" rel="noopener noreferrer" class="service-btn">虛擬財務長</a>
-                    <a href="https://www.trade.gov.tw/Robot/ChatBot.aspx?nodeID=4692" target="_blank" rel="noopener noreferrer" class="service-btn">智慧小貿</a>
-                    <a href="https://cloud.tipo.gov.tw/S282/S282WV1/" target="_blank" rel="noopener noreferrer" class="service-btn">商標以圖找圖</a>
-                    <a href="https://hscode.customs.gov.tw/" target="_blank" rel="noopener noreferrer" class="service-btn">AI 貨品稅則</a>
-                    <a href="https://goldcard.nat.gov.tw/zh/ai-disclaimer/" target="_blank" rel="noopener noreferrer" class="service-btn">就業金卡 Ash</a>
-                    <a href="https://digitalnomad.ndc.gov.tw/chat" target="_blank" rel="noopener noreferrer" class="service-btn">Nomad Taiwan</a>
+                    <a href="https://onestop.nat.gov.tw/noss/backstage/manage/main/info.do" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/career01.png" alt="" class="icon-service">
+                        商妮
+                    </a>
+                    <a href="https://www.sme.gov.tw/caas/article-caas-3040-16885" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/career02.png" alt="" class="icon-service">
+                        虛擬財務長
+                    </a>
+                    <a href="https://www.trade.gov.tw/Robot/ChatBot.aspx?nodeID=4692" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/career03.png" alt="" class="icon-service">
+                        智慧小貿
+                    </a>
+                    <a href="https://cloud.tipo.gov.tw/S282/S282WV1/" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/career04.png" alt="" class="icon-service">
+                        商標以圖找圖
+                    </a>
+                    <a href="https://hscode.customs.gov.tw/" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/career05.png" alt="" class="icon-service">
+                        AI 貨品稅則
+                    </a>
+                    <a href="https://goldcard.nat.gov.tw/zh/ai-disclaimer/" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/career06.png" alt="" class="icon-service">
+                        就業金卡 Ash
+                    </a>
+                    <a href="https://digitalnomad.ndc.gov.tw/chat" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/career07.png" alt="" class="icon-service">
+                        Nomad Taiwan
+                    </a>
                 </div>
             </div>
         </article>
@@ -237,45 +311,78 @@
         <!-- 3. 理財好夥伴 -->
         <article class="category-card finance">
             <div class="card-header">
+                <img src="images/icon-finance.png" alt="理財圖示" class="icon-category">
                 <h2>理財好夥伴</h2>
             </div>
             <div class="card-body">
                 <p class="description">報稅、發票、不動產實價、預售屋契約，AI 讓財管變得透明簡單。</p>
                 <div class="service-list">
-                    <a href="https://smart.nat.gov.tw/" target="_blank" rel="noopener noreferrer" class="service-btn">國稅智慧客服</a>
-                    <a href="https://netcsweb.tax.nat.gov.tw/Webhook/" target="_blank" rel="noopener noreferrer" class="service-btn">地方稅智慧客服</a>
-                    <a href="https://robot.einvoice.nat.gov.tw/" target="_blank" rel="noopener noreferrer" class="service-btn">雲端發票客服</a>
-                    <a href="https://taobao.tycg.gov.tw/Home" target="_blank" rel="noopener noreferrer" class="service-btn">桃寶實價 AI</a>
-                    <a href="https://ntpcailand.com.tw/" target="_blank" rel="noopener noreferrer" class="service-btn">預售屋契約比對</a>
+                    <a href="https://smart.nat.gov.tw/" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/finance01.png" alt="" class="icon-service">
+                        國稅客服
+                    </a>
+                    <a href="https://netcsweb.tax.nat.gov.tw/Webhook/" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/finance02.png" alt="" class="icon-service">
+                        地方稅客服
+                    </a>
+                    <a href="https://robot.einvoice.nat.gov.tw/" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/finance03.png" alt="" class="icon-service">
+                        雲端發票
+                    </a>
+                    <a href="https://taobao.tycg.gov.tw/Home" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/finance04.png" alt="" class="icon-service">
+                        桃寶實價 AI
+                    </a>
+                    <a href="https://ntpcailand.com.tw/" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/finance05.png" alt="" class="icon-service">
+                        預售屋比對
+                    </a>
                 </div>
             </div>
         </article>
 
-        <!-- 4. 生活萬事通 (整合 健康/旅遊/日常) -->
+        <!-- 4. 生活萬事通 -->
         <article class="category-card life">
             <div class="card-header">
+                <img src="images/icon-life.png" alt="生活圖示" class="icon-category">
                 <h2>生活萬事通</h2>
             </div>
             <div class="card-body">
                 <p class="description">涵蓋食安、旅遊、天氣等日常需求，隨時提供即時資訊與解答。</p>
                 <div class="service-list">
-                    <a href="https://fda-secretary-bot.faninsights.io/chat" target="_blank" rel="noopener noreferrer" class="service-btn">食藥小幫手</a>
-                    <a href="https://www.faninsights.io/tia_chatbot/chatbot/" target="_blank" rel="noopener noreferrer" class="service-btn">桃機智慧客服</a>
-                    <a href="https://www.cwa.gov.tw/V8/C/S/eservice/yunbot.html" target="_blank" rel="noopener noreferrer" class="service-btn">雲寶問天氣</a>
+                    <a href="https://fda-secretary-bot.faninsights.io/chat" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/life01.png" alt="" class="icon-service">
+                        食藥小幫手
+                    </a>
+                    <a href="https://www.faninsights.io/tia_chatbot/chatbot/" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/life02.png" alt="" class="icon-service">
+                        桃機客服
+                    </a>
+                    <a href="https://www.cwa.gov.tw/V8/C/S/eservice/yunbot.html" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/life03.png" alt="" class="icon-service">
+                        雲寶問天氣
+                    </a>
                 </div>
             </div>
         </article>
 
-        <!-- 5. 公共事務通 (整合 其他) -->
+        <!-- 5. 公共事務通 -->
         <article class="category-card public">
             <div class="card-header">
+                <img src="images/icon-public.png" alt="公共圖示" class="icon-category">
                 <h2>公共事務通</h2>
             </div>
             <div class="card-body">
                 <p class="description">簡化查詢流程，讓公共服務更親民。</p>
                 <div class="service-list">
-                    <a href="https://cs.judicial.gov.tw/" target="_blank" rel="noopener noreferrer" class="service-btn">司法院智慧客服</a>
-                    <a href="https://data.gov.tw/high_value_datasets" target="_blank" rel="noopener noreferrer" class="service-btn">資料開放小幫手</a>
+                    <a href="https://cs.judicial.gov.tw/" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/public01.png" alt="" class="icon-service">
+                        司法院客服
+                    </a>
+                    <a href="https://data.gov.tw/high_value_datasets" target="_blank" rel="noopener noreferrer" class="service-btn">
+                        <img src="images/public02.png" alt="" class="icon-service">
+                        資料小幫手
+                    </a>
                 </div>
             </div>
         </article>
